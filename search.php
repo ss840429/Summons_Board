@@ -117,48 +117,145 @@
                         <col span="5" style="text-align: center;" />
                     </colgroup>
                     <tbody>
-            <script>
-                $("#submit").click( () =>{
-                    var input_id = document.getElementById("id").value ;
-                    if( input_id.length <= 0 ) console.log( "No Data input" ) ;
-                    else{
-                        var info ;
-                        db.child('pet/'+input_id).once('value', e => { info = e; })     // Get info of pet
+                        <script>
+                            $("#submit").click( () =>{
+                                var input_id = document.getElementById("id").value ;
 
-                        content =  
-                               `<tr height="23">
-                                <td colspan="5" height="23" style="height: 23px; width: 360px; text-align: center;">
-                                <span style="font-size:16px;">寵物資訊</span></td>
-                            </tr>
-                            <tr height="23">
-                                <td height="23" style="height: 23px; width: 72px; text-align: center;">
-                                <span style="font-size:16px;">No.</span></td>
-                                <td style="width: 72px; text-align: center;">
-                                <span style="font-size:16px;">${info.ID}</span></td>
-                                <td style="width: 72px; text-align: center;">
-                                <span style="font-size:16px;">名稱</span></td>
-                                <td colspan="2" style="width: 144px; text-align: center;">
-                                <span style="font-size:16px;">${info.name}</span></td>
-                            </tr>
-                            <tr height="23">
-                                <td height="23" style="height: 23px; width: 72px; text-align: center;">
-                                <span style="font-size:16px;">属性</span></td>
-                                <td style="width: 72px; text-align: center;">
-                                <span style="font-size:16px;">${e.Property}</span></td>
-                                <td style="width: 72px; text-align: center;">
-                                <span style="font-size:16px;">稀有度</span></td>
-                                <td colspan="2" style="width: 144px; text-align: center;">
-                                <span style="font-size:16px;">` ;
+                                if( input_id.length <= 0 ) console.log( "No Data input" ) ;
+                                else{
+                                    var content ;
+                                    db.child('pet/'+input_id).once('value', e => {      // Get info of pet
 
-                        for( var i = 0 ; i < )
+                                        var info = e.val() ;
 
-                    }
+                                        content =  `<tr height="23">
+                                                        <td colspan="5" height="23" style="height:23px; width:360px; text-align:center;">
+                                                        <span style="font-size:16px;">寵物資訊</span></td>
+                                                    </tr>
+                                                    <tr height="23">
+                                                        <td height="23" style="height: 23px; width: 72px; text-align: center;">
+                                                        <span style="font-size:16px;">No.</span></td>
+                                                        <td style="width: 72px; text-align: center;">
+                                                        <span style="font-size:16px;">${input_id}</span></td>
+                                                        <td style="width: 72px; text-align: center;">
+                                                        <span style="font-size:16px;">名稱</span></td>
+                                                        <td colspan="2" style="width: 144px; text-align: center;">
+                                                        <span style="font-size:16px;">${info.name}</span></td>
+                                                    </tr>
+                                                    <tr height="23">
+                                                        <td height="23" style="height: 23px; width: 72px; text-align: center;">
+                                                        <span style="font-size:16px;">属性</span></td>
+                                                        <td style="width: 72px; text-align: center;">
+                                                        <span style="font-size:16px;">${info.Property}</span></td>
+                                                        <td style="width: 72px; text-align: center;">
+                                                        <span style="font-size:16px;">稀有度</span></td>
+                                                        <td colspan="2" style="width: 144px; text-align: center;">
+                                                        <span style="font-size:16px;">` ;
+
+                                        for( var i = 0 ; i < info.Star ; ++i ) content += '☆' ;
+
+                                        content += `</span></td>
+                                                    </tr>
+                                                    <tr height="23">
+                                                        <td height="23" style="height: 23px; width: 72px; text-align: center;">
+                                                        <span style="font-size:16px;">Lv</span></td>
+                                                        <td style="width: 72px; text-align: center;">
+                                                        <span style="font-size:16px;">${info.lv}</span></td>
+                                                        <td style="width: 72px; text-align: center;">
+                                                        <span style="font-size:16px;">COST</span></td>
+                                                        <td colspan="2" style="width: 144px; text-align: center;">
+                                                        <span style="font-size:16px;">${info.Cost}</span></td>
+                                                    </tr>
+                                                    <tr height="23">
+                                                        <td height="23" style="height: 23px; width: 72px; text-align: center;">
+                                                        <span style="font-size:16px;">屬性一</span></td>
+                                                        <td style="width: 72px; text-align: center;">
+                                                        <span style="font-size:16px;">${info.Type}
+                                                        <img alt="《召喚圖板》寵物 ${info.Type}" src="pic/${info.Type}.PNG" style="width:20px; height:20px;"/>
+                                                        </span></td>
+                                            
+                                                        <td style="width: 72px; text-align: center;">
+                                                        <span style="font-size:16px;">最大HP</span></td>
+                                                        <td style="width: 72px; text-align: center;">
+                                                        <span style="font-size:16px;">${info.HP}</span></td>
+                                                        <td rowspan="2" style="width: 72px; text-align: center;">
+                                                        <span style="font-size:16px;">
+                                                        <img alt="《召喚圖板》寵物 ${info.ID}" src="pic/${info.ID}.gif" style="height:60px;"/>
+                                                        </span></td>
+                                                    </tr>`;
 
 
-                    
-                });
+                                        content += `<tr height="23">
+                                                        <td height="23" style="height: 23px; width: 72px; text-align: center;">
+                                                        <span style="font-size:16px;">屬性二</span></td>
+                                                        <td style="width: 72px; text-align: center;">
+                                                        <span style="font-size:16px;">${info.Type2}
+                                                        <img alt="《召喚圖板》寵物 ${info.Type2}" src="pic/${info.Type2}.PNG" style="width: 20px; height: 20px;" />
+                                                        </span></td>
 
-            </script>
+                                                        <td style="width: 72px; text-align: center;">
+                                                        <span style="font-size:16px;">最大攻撃</span></td>
+                                                        <td style="width: 72px; text-align: center;">
+                                                        <span style="font-size:16px;">${info.Attack}&times;3或4回</span></td>
+                                                    </tr>
+
+                                                    <tr height="23">
+                                                        <td colspan="5" height="23" style="height: 23px; width: 360px; text-align: center;">
+                                                        <span style="font-size:16px;">技能</span></td>
+                                                    </tr>`;
+
+                                                    document.querySelector('#info').innerHTML = content;
+
+                                    // Skill Part 
+
+
+                                            db.child('description/active/'+info.Active).once('value', as => {
+
+                                            content  = `<tr height="23">
+                                                            <td height="55" rowspan="2" style="height:55px;width:72px;text-align:center;">
+                                                            <span style="font-size:16px;">主動技能</span></td>
+                                                            <td colspan="3" style="text-align: center;">
+                                                            <span style="font-size:16px;">${info.Active}</span></td>
+                                                            <td style="width: 72px; text-align: center;">
+                                                            <span style="font-size:16px;">回數：${as.val().Round}</span></td>
+                                                            </tr>
+                                                        <tr height="32">
+                                                            <td colspan="4" height="32" style="height:32px;width:288px;text-align: center;">
+                                                            <span style="font-size:16px;">${as.val().detail}</span></td>
+                                                        </tr>`;
+
+                                                        document.querySelector('#info').innerHTML += content;
+                                            
+                                            })
+
+                                            db.child('description/leader/'+info.Leader).once('value' , ls =>{
+
+                                            content  = `</tr>
+                                                        <tr height="23">
+                                                        <td height="55" rowspan="2" style="height: 55px; width: 72px; text-align: center;">
+                                                        <span style="font-size:16px;">隊長技能</span></td>
+                                                        <td colspan="4" style="text-align: center;">
+                                                        <span style="font-size:16px;">${info.Leader}</span></td>
+                                                        </tr>
+                                                        <tr height="32">
+                                                        <td colspan="4" height="32" style="height: 32px; width: 288px; text-align: center;">
+                                                        <span style="font-size: 16px;">${ls.val().detail}</span></td>
+                                                        </tr>` ;
+
+                                                        document.querySelector('#info').innerHTML += content;
+                                            })
+                                        
+
+
+
+                                        
+                                                
+                                    })
+                                
+                                }
+           
+                            });
+                        </script>  
 
 
                     <?php
