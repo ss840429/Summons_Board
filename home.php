@@ -62,10 +62,10 @@ header('Content-type: text/html; charset=utf-8');
                 preg_match_all('#src[^>]*#', $text, $match);      
 
                 //第一筆
-                preg_match('/member[^>]*/', $match[0][3], $match2);     
+                preg_match('/member[^>]*/', $match[0][4], $match2);     
                 echo   '<p><img src= "http://sb.gungho.jp/'."$match2[0]".'></p>';
                 //第二筆
-                preg_match('/member[^>]*/', $match[0][4], $match2); 
+                preg_match('/member[^>]*/', $match[0][5], $match2); 
                 echo   '<p><img src= "http://sb.gungho.jp/'."$match2[0]".'></p>';
                 //第三筆
                 //preg_match('/member[^>]*/', $match[0][5], $match2); 
