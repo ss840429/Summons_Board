@@ -73,9 +73,9 @@
 				<br>
 				<br>
 				<p>排序方式</p>
-				<input type="radio" name="sort" id="PID" checked="">ID
-                <input type="radio" name="sort" id="HP">HP
-                <input type="radio" name="sort" id="ATK">攻
+				<input type="radio" name="sort" value="ID" checked="">ID
+                <input type="radio" name="sort" value="HP">HP
+                <input type="radio" name="sort" value="Attack">攻
 
                 <button id="submit">查詢</button>
 			</div>
@@ -89,10 +89,15 @@
 
                     $('#submit').click( () => {
                         // var p = new Promise( done => {
-                            // db.child('pet').orderByKey().once('value', snap => {
 
-                                // snap.forEach( e => {
-                                    
+                            var orderKey = $('input[name=sort]:checked').val();
+                            var orderdb = orderKey == 'ID' ? db.child('pet').orderByKey() : db.child('pet').orderByChild(orderKey, 'DESC');
+
+                            orderdb.once('value', snap => {
+
+                                snap.forEach( e => {
+                                    console.log(e.val());
+                                });    
                                     $('input:checkbox[name=Main_Type]:checked').each( (i, item) => { 
                                         console.log($(item).val());
                                     });
@@ -108,12 +113,14 @@
                                     var hpLimit  = $('#HP').val();
                                     var atkLimit = $('#ATK').val();
 
+
                                     console.log(hpLimit, atkLimit);
 
                                 // });
 
-                            //     done();
-                            // }
+                                // done();
+                            });
+
                         // });
 
 
