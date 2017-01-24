@@ -1,12 +1,3 @@
-<?php
-            //連接MySQL伺服器
-            $link=mysql_connect("localhost", "root", "0000");
-            if(!$link) die("Unable to connect MySQL:".mysql_error());
-            mysql_select_db("pets") or die("No database.");
-            //使用 UTF8 編碼
-            mysql_query('SET CHARACTER SET UTF8;');
-?>
-
 
 <!DOCTYPE html>
 <html>
@@ -54,7 +45,7 @@ header('Content-type: text/html; charset=utf-8');
             <p class=lead>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a class="btn btn-lg btn-success" href='https://sb.gungho.jp/' role=button style="margin-bottom:-90px;margin-left:-90px">官方網站</a></p></div>
         
-<?php
+<!-- <?php
     if (isset($_POST['property']))
     {
         foreach ($_POST['property'] as $selectedval)
@@ -78,45 +69,43 @@ header('Content-type: text/html; charset=utf-8');
     {
             $atk = $_POST['ATK'];
     }
-?>
+?> -->
 
 		<div class=row>
 			<div class=col-lg-6>
-                <form method = "POST">
-    				<h2>進階搜尋</h2>
-    				<p>Type:</p>
-    				<input type="checkbox" value="攻擊type" name="type1[]" <?php echo $selected['攻擊type'] ?>>攻擊 TYPE
-    				<input type="checkbox" value="平衡type" name="type1[]" <?php echo $selected['平衡type'] ?>>平衡 TYPE
-    				<input type="checkbox" value="HP type"  name="type1[]" <?php echo $selected['HP type'] ?>>HP TYPE
-    				<br>
-    				<input type="checkbox" value="強襲type" name="type2[]" <?php echo $selected['強襲type'] ?>>強襲 TYPE
-    				<input type="checkbox" value="技能type" name="type2[]" <?php echo $selected['技能type'] ?>>技能TYPE
-    				<input type="checkbox" value="反擊type" name="type2[]" <?php echo $selected['反擊type'] ?>>反擊TYPE
-    				<input type="checkbox" value="輔助type" name="type2[]" <?php echo $selected['輔助type'] ?>>輔助TYPE
-    				<input type="checkbox" value="防禦type" name="type2[]" <?php echo $selected['防禦type'] ?>>防禦TYPE
-    				<br>
-    				<br>
-    				<p>屬性:</p>
-    				<input type="checkbox" value="火" name="property[]" <?php echo $selected['火'] ?>>火屬
-    				<input type="checkbox" value="水" name="property[]" <?php echo $selected['水'] ?>>水屬
-    				<input type="checkbox" value="木" name="property[]" <?php echo $selected['木'] ?>>木屬
-    				<input type="checkbox" value="光" name="property[]" <?php echo $selected['光'] ?>>光屬
-    				<input type="checkbox" value="暗" name="property[]" <?php echo $selected['暗'] ?>>暗屬
-    				<br>
-    				<br>
-    				<p>數值搜尋:</p>
-    				<div>HP大於：<br><input type="number" min ="0" name="HP" value="<?php echo $HP ?>"></div>
-                    <div>攻擊大於：<br><input type="number" min ="0" name="ATK" value="<?php echo $atk ?>"></div>
-    				<br>
-    				<br>
-    				<p>排序方式</p>
-    				<input type="radio" name="sort" value="PID" checked="">ID
-                    <input type="radio" name="sort" value="HP">HP
-                    <input type="radio" name="sort" value="ATK">攻
+				<h2>進階搜尋</h2>
+				<p>Type:</p>
+				<input type="checkbox" value="攻擊type" name="type1[]" >攻擊 TYPE
+				<input type="checkbox" value="平衡type" name="type1[]" >平衡 TYPE
+				<input type="checkbox" value="HP type" name="type1[]" >HP TYPE
+				<br>
+				<input type="checkbox" value="強襲type" name="type2[]" >強襲 TYPE
+				<input type="checkbox" value="技能type" name="type2[]" >技能TYPE
+				<input type="checkbox" value="反擊type" name="type2[]" >反擊TYPE
+				<input type="checkbox" value="輔助type" name="type2[]" >輔助TYPE
+				<input type="checkbox" value="防禦type" name="type2[]" >防禦TYPE
+				<br>
+				<br>
+				<p>屬性:</p>
+				<input type="checkbox" value="火" name="property[]" >火屬
+				<input type="checkbox" value="水" name="property[]" >水屬
+				<input type="checkbox" value="木" name="property[]" >木屬
+				<input type="checkbox" value="光" name="property[]" >光屬
+				<input type="checkbox" value="暗" name="property[]" >暗屬
+				<br>
+				<br>
+				<p>數值搜尋:</p>
+				<div>HP大於：<br><input type="number" min ="0" name="HP" value="0"></div>
+                <div>攻擊大於：<br><input type="number" min ="0" name="ATK" value="0"></div>
+				<br>
+				<br>
+				<p>排序方式</p>
+				<input type="radio" name="sort" value="PID" checked="">ID
+                <input type="radio" name="sort" value="HP">HP
+                <input type="radio" name="sort" value="ATK">攻
 
-                    <input type="hidden" name="action" value="submit">
-                    <input type="submit" value="查詢">
-                </form>
+                <input type="hidden" name="action" value="submit">
+                <button id="submit">查詢</button>
 			</div>
             <div class=col-lg-6>
                 <h2>搜尋結果</h2><h5>點擊圖片可看詳細資料</h5>
