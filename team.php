@@ -45,66 +45,40 @@ header('Content-type: text/html; charset=utf-8');
             <p class=lead>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a class="btn btn-lg btn-success" href='https://sb.gungho.jp/' role=button style="margin-bottom:-90px;margin-left:-90px">官方網站</a></p></div>
         
-<!-- <?php
-    if (isset($_POST['property']))
-    {
-        foreach ($_POST['property'] as $selectedval)
-            $selected[$selectedval] = "checked";
-    }
-    if (isset($_POST['type1']))
-    {
-        foreach ($_POST['type1'] as $selectedval)
-            $selected[$selectedval] = "checked";
-    }
-    if (isset($_POST['type2']))
-    {
-        foreach ($_POST['type2'] as $selectedval)
-            $selected[$selectedval] = "checked";
-    }
-    if (isset($_POST['HP']))
-    {
-            $HP = $_POST['HP'];
-    }
-    if (isset($_POST['ATK']))
-    {
-            $atk = $_POST['ATK'];
-    }
-?> -->
 
 		<div class=row>
 			<div class=col-lg-6>
 				<h2>進階搜尋</h2>
 				<p>Type:</p>
-				<input type="checkbox" value="攻擊type" name="type1[]" >攻擊 TYPE
-				<input type="checkbox" value="平衡type" name="type1[]" >平衡 TYPE
-				<input type="checkbox" value="HP type" name="type1[]" >HP TYPE
+				<input type="checkbox" id="攻擊type" >攻擊 TYPE
+				<input type="checkbox" id="平衡type" >平衡 TYPE
+				<input type="checkbox" id="HP type" >HP TYPE
 				<br>
-				<input type="checkbox" value="強襲type" name="type2[]" >強襲 TYPE
-				<input type="checkbox" value="技能type" name="type2[]" >技能TYPE
-				<input type="checkbox" value="反擊type" name="type2[]" >反擊TYPE
-				<input type="checkbox" value="輔助type" name="type2[]" >輔助TYPE
-				<input type="checkbox" value="防禦type" name="type2[]" >防禦TYPE
+				<input type="checkbox" id="強襲type" >強襲 TYPE
+				<input type="checkbox" id="技能type" >技能TYPE
+				<input type="checkbox" id="反擊type" >反擊TYPE
+				<input type="checkbox" id="輔助type" >輔助TYPE
+				<input type="checkbox" id="防禦type" >防禦TYPE
 				<br>
 				<br>
 				<p>屬性:</p>
-				<input type="checkbox" value="火" name="property[]" >火屬
-				<input type="checkbox" value="水" name="property[]" >水屬
-				<input type="checkbox" value="木" name="property[]" >木屬
-				<input type="checkbox" value="光" name="property[]" >光屬
-				<input type="checkbox" value="暗" name="property[]" >暗屬
+				<input type="checkbox" id="Fire" >火屬
+				<input type="checkbox" id="Water" >水屬
+				<input type="checkbox" id="Tree" >木屬
+				<input type="checkbox" id="Light" >光屬
+				<input type="checkbox" id="Dark" >暗屬
 				<br>
 				<br>
 				<p>數值搜尋:</p>
-				<div>HP大於：<br><input type="number" min ="0" name="HP" value="0"></div>
-                <div>攻擊大於：<br><input type="number" min ="0" name="ATK" value="0"></div>
+				<div>HP大於：<br><input type="number" min ="0" id="HP" value="0"></div>
+                <div>攻擊大於：<br><input type="number" min ="0" id="ATK" value="0"></div>
 				<br>
 				<br>
 				<p>排序方式</p>
-				<input type="radio" name="sort" value="PID" checked="">ID
-                <input type="radio" name="sort" value="HP">HP
-                <input type="radio" name="sort" value="ATK">攻
+				<input type="radio" name="sort" id="PID" checked="">ID
+                <input type="radio" name="sort" id="HP">HP
+                <input type="radio" name="sort" id="ATK">攻
 
-                <input type="hidden" name="action" value="submit">
                 <button id="submit">查詢</button>
 			</div>
             <div class=col-lg-6>
@@ -157,7 +131,7 @@ header('Content-type: text/html; charset=utf-8');
                     }
 
                 }
-                mysql_close ($link);
+                
                 ?>
             </div>
         </div>
