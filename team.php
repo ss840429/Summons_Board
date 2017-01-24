@@ -91,7 +91,7 @@
                         // var p = new Promise( done => {
 
                             var orderKey = $('input[name=sort]:checked').val();
-                            var orderdb = orderKey == 'ID' ? db.child('pet').orderByKey() : db.child('pet').orderByChild(orderKey, 'DESC');
+                            var orderdb = orderKey == 'ID' ? db.child('pet').orderByKey() : db.child('pet').orderByChild(orderKey);
 
                             orderdb.once('value', snap => {
 
