@@ -35,7 +35,7 @@
                 </ul>
             </div>
         </div>
-        <div class='jumbotron' style="background-image:url('http://www.csie.ntnu.edu.tw/~40247015S/SummonsBoard/pic/kanban3.jpg');background-repeat:no-repeat;background-size:100% 100%">
+        <div class='jumbotron' style="background-image:url('pic/kanban3.jpg');background-repeat:no-repeat;background-size:100% 100%">
             <h1>&nbsp;</h1>
             <p class=lead>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a class="btn btn-lg btn-success" href='https://sb.gungho.jp/' role=button style="margin-bottom:-90px;margin-left:-90px">官方網站</a></p></p>
@@ -52,7 +52,7 @@
                     <div id='datatable'></div>
 
                         <script>
-                            var picURL = 'http://www.csie.ntnu.edu.tw/~40247015S/SummonsBoard';
+                            var pic = 'pic/';
                             var db = new Firebase('https://summonsboard-2c5f0.firebaseio.com/') ;
                             var LA = [];
 
@@ -88,7 +88,7 @@
                                             <a href= '#' onclick=TouchPic(${L.ID}) >
                                                 <img
                                                     alt="${L.name}"
-                                                    src="${picURL}/pic/${L.ID}.gif"
+                                                    src="${pic}${L.ID}.gif"
                                                     style="height: 60px;" />
                                             </a>
                                         </td>
@@ -164,7 +164,7 @@
                                                         <span style="font-size:16px;">屬性一</span></td>
                                                         <td style="width: 72px; text-align: center;">
                                                         <span style="font-size:16px;">${info.Type}
-                                                        <img alt="《召喚圖板》寵物 ${info.Type}" src="pic/${info.Type}.PNG" style="width:20px; height:20px;"/>
+                                                        <img alt="《召喚圖板》寵物 ${info.Type}" src="${pic}${info.Type}.PNG" style="width:20px; height:20px;"/>
                                                         </span></td>
                                             
                                                         <td style="width: 72px; text-align: center;">
@@ -173,7 +173,7 @@
                                                         <span style="font-size:16px;">${info.HP}</span></td>
                                                         <td rowspan="2" style="width: 72px; text-align: center;">
                                                         <span style="font-size:16px;">
-                                                        <img alt="《召喚圖板》寵物 ${info.ID}" src="pic/${info.ID}.gif" style="height:60px;"/>
+                                                        <img alt="《召喚圖板》寵物 ${info.ID}" src="${pic}${info.ID}.gif" style="height:60px;"/>
                                                         </span></td>
                                                     </tr>`;
 
@@ -183,7 +183,7 @@
                                                         <span style="font-size:16px;">屬性二</span></td>
                                                         <td style="width: 72px; text-align: center;">
                                                         <span style="font-size:16px;">${info.Type2}
-                                                        <img alt="《召喚圖板》寵物 ${info.Type2}" src="pic/${info.Type2}.PNG" style="width: 20px; height: 20px;" />
+                                                        <img alt="《召喚圖板》寵物 ${info.Type2}" src="${pic}${info.Type2}.PNG" style="width: 20px; height: 20px;" />
                                                         </span></td>
 
                                                         <td style="width: 72px; text-align: center;">
@@ -247,7 +247,7 @@
 
 
                                                         if ( true /* SA != null */ ) {
-                                                            content += `<img alt="《召喚圖板》寵物 ${info.SA}" src="pic/${info.SA}.PNG" style="width: 20px; height: 20px;" />`;
+                                                            content += `<img alt="《召喚圖板》寵物 ${info.SA}" src="${pic}${info.SA}.PNG" style="width: 20px; height: 20px;" />`;
                                                         }
 
                                             content += `</span></td></tr>` ;
@@ -258,7 +258,7 @@
 
 
                                                         if ( true /* SA != null */ ) {
-                                                            content += `<img alt="《召喚圖板》寵物 ${info.SA2}" src="pic/${info.SA2}.PNG" style="width: 20px; height: 20px;" />`;
+                                                            content += `<img alt="《召喚圖板》寵物 ${info.SA2}" src="${pic}${info.SA2}.PNG" style="width: 20px; height: 20px;" />`;
                                                         }
 
                                             content += `</span></td></tr>` ;
