@@ -5,8 +5,8 @@
     <meta http-equiv=X-UA-Compatible content="IE=edge">
     <meta name=viewport content="width=device-width, initial-scale=1">
     <meta name=description content="">
-    <meta name=author content="">
-    <link rel=icon href=/Content/AssetsBS3/img/favicon.ico>
+    <meta name=author content="Wlogsky">
+    <link rel=icon href="pic/icon.jpg">
     <title>サモンズボード</title>
     <link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css rel=stylesheet>
     <style type="text/css">
@@ -21,11 +21,12 @@
             <div role=navigation>
                 <ul class="nav nav-justified">
                     <li class=active><a href=home.php>Home</a></li>
-                        <li><a href=search.php>図鑑</a></li>
-                            <li><a href=team.php>Team</a></li>
-                                <li><a href=download.php>Downloads</a></li>
-                                    <li><a href=login.php>Manage</a></li>
-                                        <li><a href=about.php>About</a></li></ul>
+                    <li><a href=search.php>図鑑</a></li>
+                    <li><a href=team.php>Team</a></li>
+                    <li><a href=download.php>Downloads</a></li>
+                    <li><a href=login.php>Manage</a></li>
+                    <li><a href=about.php>About</a></li>
+                </ul>
             </div>
         </div>
         <div class=jumbotron style="background-image:url('pic/kanban2.jpg');background-repeat:no-repeat;background-size:100% 100%">
