@@ -1,42 +1,28 @@
-<?php
-            //連接MySQL伺服器
-            $link=mysql_connect("localhost", "root", "0000");
-            if(!$link) die("Unable to connect MySQL:".mysql_error());
-            mysql_select_db("pets") or die("No database.");
-            //使用 UTF8 編碼
-            mysql_query('SET CHARACTER SET UTF8;');
-?>
-
 
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset=utf-8>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv=X-UA-Compatible content="IE=edge">
     <meta name=viewport content="width=device-width, initial-scale=1">
     <meta name=description content="">
-    <meta name=author content="">
-    <link rel=icon href=/Content/AssetsBS3/img/favicon.ico>
+    <meta name=author content="Wlogsky">
+    <link rel=icon href="pic/icon.jpg">
     <title>サモンズボード</title>
     <link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css rel=stylesheet>
-    <link href=/Content/AssetsBS3/examples/justified-nav.css rel=stylesheet>
-    <!--[if lt IE 9]><script src=~/Scripts/AssetsBS3/ie8-responsive-file-warning.js></script><![endif]-->
-    <script src=/Scripts/AssetsBS3/ie-emulation-modes-warning.js></script>
-    <!--[if lt IE 9]><script src=https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js></script><script src=https://oss.maxcdn.com/respond/1.4.2/respond.min.js></script><![endif]-->
     <style type="text/css">
-    * {
-        font-family: 'Microsoft JhengHei';
-    }
-</style>
-<style>
-    .fixed {
-      position: fixed;
-      top: 10px;
-      right: 0;
-      width: 200px;
-      background-color: white;
-  }
-</style>
+    * { font-family: 'Microsoft JhengHei'; }
+    </style>
+
+    <style>
+        .fixed {
+            position: fixed;
+            top: 10px;
+            right: 0;
+            width: 200px;
+            background-color: white;
+        }
+    </style>
 </head>
 <body>
     <div class=container>
@@ -45,11 +31,12 @@
             <div role=navigation>
                 <ul class="nav nav-justified">
                     <li class=active><a href=home.php>Home</a></li>
-                        <li><a href=search.php>図鑑</a></li>
-                            <li><a href=team.php>Team</a></li>
-                                <li><a href=download.php>Downloads</a></li>
-                                    <li><a href=login.php>Manage</a></li>
-                                        <li><a href=about.php>About</a></li></ul>
+                    <li><a href=search.php>図鑑</a></li>
+                    <li><a href=team.php>Team</a></li>
+                    <li><a href=download.php>Downloads</a></li>
+                    <li><a href=login.php>Manage</a></li>
+                    <li><a href=about.php>About</a></li>
+                </ul>
             </div>
         </div>
         <div class = "fixed">
