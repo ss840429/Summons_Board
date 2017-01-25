@@ -16,9 +16,7 @@
     <script src='https://cdn.firebase.com/js/client/2.1.1/firebase.js'></script>
 
     <style type="text/css">
-    * {
-        font-family: 'Microsoft JhengHei';
-    }
+    * { font-family: 'Microsoft JhengHei'; }
     </style>
 </head>
 
@@ -92,38 +90,35 @@
 
                             var orderKey = $('input[name=sort]:checked').val();
                             var orderdb = orderKey == 'ID' ? db.child('pet').orderByKey() : db.child('pet').orderByChild(orderKey);
+                            var conditions = [] ;
+
+                            $('input:checkbox:checked').each( (i, item) => { 
+                                conditions.push($(item).val())
+                            });
+
 
                             orderdb.once('value', snap => {
-
                                 snap.forEach( e => {
-                                    console.log(e.val());
-                                });    
-                                    $('input:checkbox[name=Main_Type]:checked').each( (i, item) => { 
-                                        console.log($(item).val());
-                                    });
-
-                                    $('input:checkbox[name=Sec_Type]:checked').each( (i, item) => { 
-                                        console.log($(item).val());
-                                    });
-
-                                    $('input:checkbox[name=Type]:checked').each( (i, item) => { 
-                                        console.log($(item).val());
-                                    });
-
                                     var hpLimit  = $('#HP').val();
                                     var atkLimit = $('#ATK').val();
 
+                                    if( $('input:checkbox[name=Main_Type]:checked').length && $.inArray(e.val()['Type'], conditions) == -1
+                                    ||  $('input:checkbox[name=Sec_Type]:checked').length && $.inArray(e.val()['Type2'], conditions) == -1
+                                    ||  $('input:checkbox[name=Type]:checked').length &&  $.inArray(e.val()['Property'], conditions) == -1
+                                    || ( hpLimit > e.val()['HP'] && atkLimit > e.val()['Attack']) )
+                                    { 
+                                        false;
+                                    }
+                                    else result.push(e.val());
+                                });
+                                console.log(result);
 
-                                    console.log(hpLimit, atkLimit);
 
-                                // });
-
-                                // done();
                             });
 
                         // });
 
-
+                        result = [];
                     });
 
 
@@ -182,7 +177,6 @@
             </div>
         </div>
     </div>
-    <script src=/Scripts/AssetsBS3/ie10-viewport-bug-workaround.js></script>
     <footer class=footer>
          </br><p style = "text-align:center">2016&copy; Wlogsky、Patato、Ryanooo </p></footer>
 </body>
