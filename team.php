@@ -60,8 +60,8 @@
 				<p>屬性:</p>
 				<input type="checkbox" value="火" name="Type">火屬
 				<input type="checkbox" value="水" name="Type">水屬
-				<input type="checkbox" value="木" name="Type" checked>木屬
-				<input type="checkbox" value="光" name="Type" checked>光屬
+				<input type="checkbox" value="木" name="Type">木屬
+				<input type="checkbox" value="光" name="Type">光屬
 				<input type="checkbox" value="暗" name="Type">暗屬
 				<br>
 				<br>
@@ -107,12 +107,18 @@
                                     ||  $('input:checkbox[name=Type]:checked').length &&  $.inArray(e.val()['Property'], conditions) == -1
                                     || ( hpLimit > e.val()['HP'] && atkLimit > e.val()['Attack']) )
                                     { 
-                                        false;
+                                        false ;
                                     }
                                     else result.push(e.val());
                                 });
-                                console.log(result);
+                                // console.log(result);
 
+                                var content = '' ;
+
+                                for( var e of result ){
+                                    content += `<td><a href=search.php?id=${e.ID}><img alt="《召喚圖板》寵物 ${e.ID}" src="pic/${e.ID}.gif" style="height: 60px;" /></a></td>`;
+                                }
+                                document.querySelector('#datatable').innerHTML = content;
 
                             });
 
