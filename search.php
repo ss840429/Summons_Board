@@ -308,7 +308,7 @@
 </script>>
 
     <footer class=footer>
-         </br><p style = "text-align:center">2016&copy; Wlogsky、Patato、Ryanooo </p></footer>
+         </br><p style = "text-align:center">2016-2017&copy; Wlogsky </p></footer>
 </body>
 </html>
 

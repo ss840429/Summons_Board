@@ -126,64 +126,11 @@
 
                         result = [];
                     });
-
-
-
                 </script>   
-
-                <!-- <?php
-                if($_POST["action"] == "submit")
-                {
-                    $sql_quest = "SELECT ID FROM pet WHERE 1";
-
-                    $tmp = $_POST ["type1"] ;
-                    if( count($tmp) != 0 )
-                    {
-                        $con= implode("' OR Type='", $tmp ) ;
-                        $sql_quest .= (" AND (Type='".$con."')") ;    
-                    }
-
-                    $tmp = $_POST ["type2"] ;
-                    if( count($tmp) != 0 )
-                    {
-                        $con= implode("' OR Type2='", $tmp ) ;
-                        $sql_quest .= (" AND (Type2='".$con."')") ;    
-                    }
-
-                    $tmp = $_POST ["property"] ;
-                    $flag += count($tmp) ;
-                    if( count($tmp) != 0 )
-                    {
-                        $con= implode("' OR Property='", $tmp ) ;
-                        $sql_quest .= (" AND (Property='".$con."')") ;    
-                    }
-
-                    $tmp = $_POST ["HP"] ;
-                    if ($tmp != '')
-                    $sql_quest .= (" AND HP > ".$tmp." ") ;
-
-                    $tmp = $_POST ["ATK"] ;
-                    if ($tmp != '')
-                    $sql_quest .= (" AND Attack > ".$tmp." ") ;
-            
-
-                    if($_POST["sort"] == 'PID') $sql_quest .= " ORDER BY ID;" ;
-                    else if($_POST["sort"] == 'HP') $sql_quest .= " ORDER BY HP;" ;
-                    else if($_POST["sort"] == 'ATK') $sql_quest .= " ORDER BY Attack;" ;
-
-                    //echo $sql_quest ;
-
-                    $result = mysql_query($sql_quest);
-                    while( $sin = mysql_fetch_object($result) ){
-                        echo '<td><a href=search.php?id='.$sin->ID.'&action=submit><img alt="《召喚圖板》寵物 '.$sin->ID.'" src="pic/'.$sin->ID.'.gif" style="height: 60px;" /></a></td>';
-                    }
-
-                }
-                ?> -->
             </div>
         </div>
     </div>
     <footer class=footer>
-         </br><p style = "text-align:center">2016&copy; Wlogsky、Patato、Ryanooo </p></footer>
+         </br><p style = "text-align:center">2016-2017&copy; Wlogsky </p></footer>
 </body>
 </html>
