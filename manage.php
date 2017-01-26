@@ -10,8 +10,12 @@
     <link rel=icon href="pic/icon.jpg">
     <title>サモンズボード</title>
     <link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css rel=stylesheet>
+
+    <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase.js"></script>    <!-- FireBase -->
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script src='https://cdn.firebase.com/js/client/2.1.1/firebase.js'></script>
     <style type="text/css">
-    * { font-family: 'Microsoft JhengHei'; }
+        * { font-family: 'Microsoft JhengHei'; }
     </style>
 
     <style>
@@ -50,67 +54,67 @@
             <div class=col-lg-4>
                 <h2>Add/Update</h2>
                 <div id="Add">
-                    <form method="POST" enctype="multipart/form-data">
-                        <table style="text-align: right;" width="330" border="0">
-                        <tr><td><label for="id">ID</label></td>
-                        <td><input type="text" name="addid"></td></tr>
-                        <tr><td><label for="name">Name</label></td>
-                        <td><input type="text" name="name"></td></tr>
-                        <tr><td><label for="property">屬性</label>
-                        <td><input type="text" name="property"></td></tr>
-                        <tr><td><label for="star">Star</label>
-                        <td><input type="text" name="star"></td></tr>
-                        <tr><td><label for="level">Level</label>
-                        <td><input type="text" name="level"></td></tr>
-                        <tr><td><label for="cost">Cost</label>
-                        <td><input type="text" name="cost"></td></tr>
+                    <table style="text-align: right;" width="330" border="0">
+                    <tr><td><label for="id">ID</label></td>
+                    <td><input type="text" name="addid"></td></tr>
+                    <tr><td><label for="name">Name</label></td>
+                    <td><input type="text" name="name"></td></tr>
+                    <tr><td><label for="property">屬性</label>
+                    <td><input type="text" name="property"></td></tr>
+                    <tr><td><label for="star">Star</label>
+                    <td><input type="text" name="star"></td></tr>
+                    <tr><td><label for="level">Level</label>
+                    <td><input type="text" name="level"></td></tr>
+                    <tr><td><label for="cost">Cost</label>
+                    <td><input type="text" name="cost"></td></tr>
 
-                        <tr><td><label for="type1">屬性一</label></td>
-                        <td style="text-align: center;"><select name="type1" >
-                        <option value=""></option>
-                        <option value="HP type">HP type</option>
-                        <option value="攻擊type">攻擊type</option>
-                        <option value="平衡type">平衡type</option>
-                        </select> </td></tr>
+                    <tr><td><label for="type1">屬性一</label></td>
+                    <td style="text-align: center;"><select name="type1" >
+                    <option value=""></option>
+                    <option value="HP type">HP type</option>
+                    <option value="攻擊type">攻擊type</option>
+                    <option value="平衡type">平衡type</option>
+                    </select> </td></tr>
 
-                        <tr><td><label for="type2">屬性二</label></td>
-                        <td style="text-align: center;"><select name="type2" >
-                        <option value=""></option>
-                        <option value="防禦type">防禦type</option>
-                        <option value="輔助type">輔助type</option>
-                        <option value="強襲type">強襲type</option>
-                        <option value="技能type">技能type</option>
-                        <option value="反擊type">反擊type</option>
-                        </select></td></tr>
+                    <tr><td><label for="type2">屬性二</label></td>
+                    <td style="text-align: center;"><select name="type2" >
+                    <option value=""></option>
+                    <option value="防禦type">防禦type</option>
+                    <option value="輔助type">輔助type</option>
+                    <option value="強襲type">強襲type</option>
+                    <option value="技能type">技能type</option>
+                    <option value="反擊type">反擊type</option>
+                    </select></td></tr>
 
-                        <tr><td><label for="hp">HP</label>
-                        <td><input type="text" name="hp"></td></tr>
-                        <tr><td><label for="atk">Attack</label>
-                        <td><input type="text" name="atk"></td></tr>
+                    <tr><td><label for="hp">HP</label>
+                    <td><input type="text" name="hp"></td></tr>
+                    <tr><td><label for="atk">Attack</label>
+                    <td><input type="text" name="atk"></td></tr>
 
-                        <tr><td><label for="as">主動技名稱</label>
-                        <td><input type="text" name="as"></td></tr>
-                        <tr><td><label for="asd">敘述</label>
-                        <td><input type="text" name="asd"></td></tr>
-                        <tr><td><label for="round">回數</label>
-                        <td><input type="text" name="round"></td></tr>
+                    <tr><td><label for="as">主動技名稱</label>
+                    <td><input type="text" name="as"></td></tr>
+                    <tr><td><label for="asd">敘述</label>
+                    <td><input type="text" name="asd"></td></tr>
+                    <tr><td><label for="round">回數</label>
+                    <td><input type="text" name="round"></td></tr>
 
-                        <tr><td><label for="ls">隊長技名稱</label>
-                        <td><input type="text" name="ls"></td></tr>
-                        <tr><td><label for="lsd">敘述</label>
-                        <td><input type="text" name="lsd"></td></tr>
-                        
-                        <tr><td><label for="sp1">能力一</label>
-                        <td><input type="text" name="sp1"></td></tr>
-                        <tr><td><label for="sp2">能力二</label>
-                        <td><input type="text" name="sp2"></td></tr></table>
+                    <tr><td><label for="ls">隊長技名稱</label>
+                    <td><input type="text" name="ls"></td></tr>
+                    <tr><td><label for="lsd">敘述</label>
+                    <td><input type="text" name="lsd"></td></tr>
+                    
+                    <tr><td><label for="sp1">能力一</label>
+                    <td><input type="text" name="sp1"></td></tr>
+                    <tr><td><label for="sp2">能力二</label>
+                    <td><input type="text" name="sp2"></td></tr></table>
 
-                        <input id="file" name="file" type="file">
+                    <input id="file" name="file" type="file">
 
-                        <input type="hidden" name="action_add" value="submit">
-                        <input type="submit" value="新增/更新">
-                    </form>
-                    <?php
+                    <input type="hidden" name="action_add" value="submit">
+                    <input type="submit" value="新增/更新">
+
+
+                   <!--  <?php
                     if($_POST["action_add"] == "submit")
                     {
                         $addid = $_POST["addid"];
@@ -279,9 +283,14 @@
                             }
                         }
                     }
-                    ?>
+                    ?> -->
                 </div>
-            </div>  
+            </div> 
+            <script type="text/javascript">         // Add or Update 
+                var db = new Firebase('https://summonsboard-2c5f0.firebaseio.com/') ;
+                var pic = 'pic/';
+
+            </script>> 
 
             <div class=col-lg-3>
                 <h2>Delete</h2>
@@ -292,7 +301,7 @@
                         <input type="hidden" name="action" value="submit">
                         <input type="submit" value="刪除">
                     </form>
-                    <?php
+                    <!-- <?php
                         if($_POST["action"] == "submit")
                         {
                             $id = $_POST["id"];
@@ -330,156 +339,182 @@
                             }
                         }
                     }
-                    ?>
+                    ?> -->
                 </div>
             </div>
+            <script type="text/javascript">        // Delete
+                
+
+            </script>
+
 
             <div class=col-lg-3>
-            <h2>Search</h2>
-            <form method="POST">
-                        <label for="id">ID :&nbsp;</label>
-                        <input type="text" name="idsub">
-                        <input type="hidden" name="action_sub" value="submit">
-                        <input type="submit" value="查詢">
-                    </form>
+                <h2>Search</h2>
+                <label for="search_id">ID :&nbsp;</label>
+                <input type="text" id="search_id">
+                <button id="search_button" >查詢</button>
                 <table align="center" border="2" cellpadding="0" cellspacing="0" style="width: 500px;" width="360">
-                    <colgroup>
-                        <col span="5" style="text-align: center;" />
-                    </colgroup>
-                    <tbody>
-                    <?php
-                            if($_POST["action_sub"] == "submit" || $_POST["action"] == "submit" ||$_POST["action_add"] == "submit")
-                            {
-                                //echo isset($_GET['addid']);
-                                 if ($_POST["action_sub"] == "submit" ) {//search bar
-                                    $idsub = $_POST["idsub"];
-                                    $search_id2="SELECT * FROM pet where ID = $idsub";
-                                    $resultsub = mysql_query($search_id2);
+                    <colgroup><col span="5" style="text-align: center;" /></colgroup>
+                    <tbody id="search">
+                    <script type="text/javascript">     // Search
 
-                                    if ($idsub=='') die("Search:請輸入寵物ID。");
-                                 }
-                                 else if ($_POST["action_add"] == "submit") {//add bar
-                                    $idsub = $_POST["addid"];
-                                    $search_id2="SELECT * FROM pet where ID = $addid";
-                                    $resultsub = mysql_query($search_id2);
+                        $("#search_button").click( () =>{
+                            var input_id = document.getElementById("search_id").value ;
+                            console.log(input_id);
+                            if( input_id.length <= 0 ) console.log( "No Data input" ) ;
+                            else{
+                                var content ;
+                                db.child('pet/'+input_id).once('value', e => {      // Get info of pet
 
-                                    if ($addid=='') die("Add:請輸入寵物ID。");
-                                 }
-                                 else if ($_POST["action"] == "submit" ) {//delete bar
-                                    $idsub = $_POST["id"];
-                                    $search_id2="SELECT * FROM pet where ID = $id";
-                                    $resultsub = mysql_query($search_id2);
+                                    var info = e.val() ;
 
-                                    if ($id=='') die("Delete:請輸入寵物ID。");
+                                    content =  `<tr height="23">
+                                                    <td colspan="5" height="23" style="height:23px; width:360px; text-align:center;">
+                                                    <span style="font-size:16px;">寵物資訊</span></td>
+                                                </tr>
+                                                <tr height="23">
+                                                    <td height="23" style="height: 23px; width: 72px; text-align: center;">
+                                                    <span style="font-size:16px;">No.</span></td>
+                                                    <td style="width: 72px; text-align: center;">
+                                                    <span style="font-size:16px;">${input_id}</span></td>
+                                                    <td style="width: 72px; text-align: center;">
+                                                    <span style="font-size:16px;">名稱</span></td>
+                                                    <td colspan="2" style="width: 144px; text-align: center;">
+                                                    <span style="font-size:16px;">${info.name}</span></td>
+                                                </tr>
+                                                <tr height="23">
+                                                    <td height="23" style="height: 23px; width: 72px; text-align: center;">
+                                                    <span style="font-size:16px;">属性</span></td>
+                                                    <td style="width: 72px; text-align: center;">
+                                                    <span style="font-size:16px;">${info.Property}</span></td>
+                                                    <td style="width: 72px; text-align: center;">
+                                                    <span style="font-size:16px;">稀有度</span></td>
+                                                    <td colspan="2" style="width: 144px; text-align: center;">
+                                                    <span style="font-size:16px;">` ;
 
-                                 }
-                                 
+                                    for( var i = 0 ; i < info.Star ; ++i ) content += '☆' ;
+
+                                    content += `</span></td>
+                                                </tr>
+                                                <tr height="23">
+                                                    <td height="23" style="height: 23px; width: 72px; text-align: center;">
+                                                    <span style="font-size:16px;">Lv</span></td>
+                                                    <td style="width: 72px; text-align: center;">
+                                                    <span style="font-size:16px;">99</span></td>
+                                                    <td style="width: 72px; text-align: center;">
+                                                    <span style="font-size:16px;">COST</span></td>
+                                                    <td colspan="2" style="width: 144px; text-align: center;">
+                                                    <span style="font-size:16px;">${info.Cost}</span></td>
+                                                </tr>
+                                                <tr height="23">
+                                                    <td height="23" style="height: 23px; width: 72px; text-align: center;">
+                                                    <span style="font-size:16px;">屬性一</span></td>
+                                                    <td style="width: 72px; text-align: center;">
+                                                    <span style="font-size:16px;">${info.Type}
+                                                    <img alt="《召喚圖板》寵物 ${info.Type}" src="${pic}${info.Type}.PNG" style="width:20px; height:20px;"/>
+                                                    </span></td>
+                                        
+                                                    <td style="width: 72px; text-align: center;">
+                                                    <span style="font-size:16px;">最大HP</span></td>
+                                                    <td style="width: 72px; text-align: center;">
+                                                    <span style="font-size:16px;">${info.HP}</span></td>
+                                                    <td rowspan="2" style="width: 72px; text-align: center;">
+                                                    <span style="font-size:16px;">
+                                                    <img alt="《召喚圖板》寵物 ${info.ID}" src="${pic}${info.ID}.gif" style="height:60px;"/>
+                                                    </span></td>
+                                                </tr>`;
+
+
+                                    content += `<tr height="23">
+                                                    <td height="23" style="height: 23px; width: 72px; text-align: center;">
+                                                    <span style="font-size:16px;">屬性二</span></td>
+                                                    <td style="width: 72px; text-align: center;">
+                                                    <span style="font-size:16px;">${info.Type2}
+                                                    <img alt="《召喚圖板》寵物 ${info.Type2}" src="${pic}${info.Type2}.PNG" style="width: 20px; height: 20px;" />
+                                                    </span></td>
+
+                                                    <td style="width: 72px; text-align: center;">
+                                                    <span style="font-size:16px;">最大攻撃</span></td>
+                                                    <td style="width: 72px; text-align: center;">
+                                                    <span style="font-size:16px;">${info.Attack}&times;3或4回</span></td>
+                                                </tr>
+
+                                                <tr height="23">
+                                                    <td colspan="5" height="23" style="height: 23px; width: 360px; text-align: center;">
+                                                    <span style="font-size:16px;">技能</span></td>
+                                                </tr>`;
+
+                                                document.querySelector('#search').innerHTML = content;
+
+                                // Skill Part 
+
+
+                                        db.child('description/active/'+info.Active).once('value', as => {
+
+                                        content  = `<tr height="23">
+                                                        <td height="55" rowspan="2" style="height:55px;width:72px;text-align:center;">
+                                                        <span style="font-size:16px;">主動技能</span></td>
+                                                        <td colspan="3" style="text-align: center;">
+                                                        <span style="font-size:16px;">${info.Active}</span></td>
+                                                        <td style="width: 72px; text-align: center;">
+                                                        <span style="font-size:16px;">回數：${as.val().Round}</span></td>
+                                                        </tr>
+                                                    <tr height="32">
+                                                        <td colspan="4" height="32" style="height:32px;width:288px;text-align: center;">
+                                                        <span style="font-size:16px;">${as.val().detail}</span></td>
+                                                    </tr>`;
+
+                                                    document.querySelector('#search').innerHTML += content;
+                                        
+                                        })
+
+                                        db.child('description/leader/'+info.Leader).once('value' , ls =>{
+
+                                        content  = `</tr>
+                                                    <tr height="23">
+                                                    <td height="55" rowspan="2" style="height: 55px; width: 72px; text-align: center;">
+                                                    <span style="font-size:16px;">隊長技能</span></td>
+                                                    <td colspan="4" style="text-align: center;">
+                                                    <span style="font-size:16px;">${info.Leader}</span></td>
+                                                    </tr>
+                                                    <tr height="32">
+                                                    <td colspan="4" height="32" style="height: 32px; width: 288px; text-align: center;">
+                                                    <span style="font-size: 16px;">${ls.val().detail}</span></td>
+                                                    </tr>` ;
+
+                                                    document.querySelector('#search').innerHTML += content;
+                                        })
                                     
 
-                                 $recordsub = mysql_fetch_object($resultsub);
+                                        content =  `<tr height="23">
+                                                    <td height="92" rowspan="2" style="height: 46px; width: 72px; text-align: center;">
+                                                    <span style="font-size:16px;">能力</span></td>
+                                                    <td colspan="4" style="text-align: center;">
+                                                    <span style="font-size:16px;">${info.SA}`;
 
-                                 $search_active_skill = "SELECT * FROM pet natural join useas natural join as_ WHERE ID = $idsub";
-                                 $active_result = mysql_query($search_active_skill);
-                                 $AS_record = mysql_fetch_object($active_result);
 
-                                 $search_leader_skill = "SELECT * FROM pet natural join usels natural join ls WHERE ID = $idsub";
-                                 $leader_result = mysql_query($search_leader_skill);
-                                 $LS_record = mysql_fetch_object($leader_result);
+                                                    if ( true /* SA != null */ ) {
+                                                        content += `<img alt="《召喚圖板》寵物 ${info.SA}" src="${pic}${info.SA}.PNG" style="width: 20px; height: 20px;" />`;
+                                                    }
+
+                                        content += `</span></td></tr>` ;
+
+                                        content += `<tr height="23">
+                                                    <td colspan="4" style="text-align: center;">
+                                                    <span style="font-size:16px;">${info.SA2}`;
+
+
+                                                    if ( true /* SA != null */ ) {
+                                                        content += `<img alt="《召喚圖板》寵物 ${info.SA2}" src="${pic}${info.SA2}.PNG" style="width: 20px; height: 20px;" />`;
+                                                    }
+
+                                        content += `</span></td></tr>` ;
+
+                                        document.querySelector('#search').innerHTML += content ;                                          
+                                })
                             }
-                            //echo "$recordsub->Star";
-
-                            if ($idsub=='') {
-                                //die("請輸入寵物ID。") ;
-                            }
-                            else if (!$recordsub) {
-                                echo "No data.";
-                            }
-                                echo '<tr height="23">
-                                <td colspan="5" height="23" style="height: 23px; width: 360px; text-align: center;"><span style="font-size:16px;">寵物資訊</span></td>
-                            </tr>
-                            <tr height="23">
-                                <td height="23" style="height: 23px; width: 72px; text-align: center;"><span style="font-size:16px;">No.</span></td>
-                                <td style="width: 72px; text-align: center;"><span style="font-size:16px;">'.$recordsub->ID.'</span></td>
-                                <td style="width: 72px; text-align: center;"><span style="font-size:16px;">名稱</span></td>
-                                <td colspan="2" style="width: 144px; text-align: center;"><span style="font-size:16px;">'.$recordsub->name.'</span></td>
-                            </tr>
-                            <tr height="23">
-                                <td height="23" style="height: 23px; width: 72px; text-align: center;"><span style="font-size:16px;">属性</span></td>
-                                <td style="width: 72px; text-align: center;"><span style="font-size:16px;">'.$recordsub->Property.'</span></td>
-                                <td style="width: 72px; text-align: center;"><span style="font-size:16px;">稀有度</span></td>
-                                <td colspan="2" style="width: 144px; text-align: center;"><span style="font-size:16px;">';
-                                for ($i=0; $i < $recordsub->Star; $i++) { 
-                                    echo '☆';
-                                }
-                                echo '</span></td>
-                            </tr>
-                            <tr height="23">
-                                <td height="23" style="height: 23px; width: 72px; text-align: center;"><span style="font-size:16px;">Lv</span></td>
-                                <td style="width: 72px; text-align: center;"><span style="font-size:16px;">'.$recordsub->lv.'</span></td>
-                                <td style="width: 72px; text-align: center;"><span style="font-size:16px;">COST</span></td>
-                                <td colspan="2" style="width: 144px; text-align: center;"><span style="font-size:16px;">'.$recordsub->Cost.'</span></td>
-                            </tr>
-                            <tr height="23">
-                                <td height="23" style="height: 23px; width: 72px; text-align: center;"><span style="font-size:16px;">屬性一</span></td>
-                                <td style="width: 72px; text-align: center;"><span style="font-size:16px;">'.$recordsub->Type.'</span></td>
-                                <td style="width: 72px; text-align: center;"><span style="font-size:16px;">最大HP</span></td>
-                                <td style="width: 72px; text-align: center;"><span style="font-size:16px;">'.$recordsub->HP.'</span></td>
-                                <td rowspan="2" style="width: 72px; text-align: center;"><span style="font-size:16px;">';
-                                if ($recordsub) {
-                                    echo '<img alt="《召喚圖板》寵物 '.$recordsub->ID.'" src="pic/'.$recordsub->ID.'.gif" style="height: 60px;" />';
-                                }
-                                
-                            echo '</span></td>
-                            </tr>
-                            <tr height="23">
-                                <td height="23" style="height: 23px; width: 72px; text-align: center;"><span style="font-size:16px;">屬性二</span></td>
-                                <td style="width: 72px; text-align: center;"><span style="font-size:16px;">'.$recordsub->Type2.'</span></td>
-                                <td style="width: 72px; text-align: center;"><span style="font-size:16px;">最大攻撃</span></td>
-                                <td style="width: 72px; text-align: center;"><span style="font-size:16px;">'.$recordsub->Attack.'&times;3或4回</span></td>
-                            </tr>
-                            <tr height="23">
-                                <td colspan="5" height="23" style="height: 23px; width: 360px; text-align: center;"><span style="font-size:16px;">技能</span></td>
-                            </tr>
-                            <tr height="23">
-                                <td height="55" rowspan="2" style="height: 55px; width: 72px; text-align: center;"><span style="font-size:16px;">主動技能</span></td>
-                                <td colspan="3" style="text-align: center;"><span style="font-size:16px;">'.$AS_record->Title.'</span></td>
-                                <td style="width: 72px; text-align: center;"><span style="font-size:16px;">回數：'.$AS_record->Round.'</span></td>
-                            </tr>
-                            <tr height="32">
-                                <td colspan="4" height="32" style="height: 32px; width: 288px; text-align: center;"><span style="font-size:16px;">'.$AS_record->Description.'</span></td>
-                            </tr>
-                            <tr height="23">
-                                <td height="55" rowspan="2" style="height: 55px; width: 72px; text-align: center;"><span style="font-size:16px;">隊長技能</span></td>
-                                <td colspan="4" style="text-align: center;"><span style="font-size:16px;">'.$LS_record->Title.'</span></td>
-                            </tr>
-                            <tr height="32">
-                                <td colspan="4" height="32" style="height: 32px; width: 288px; text-align: center;"><span style="font-size: 16px;">'.$LS_record->Description.'</span></td>
-                            </tr>
-                            <tr height="23">
-                                <td height="92" rowspan="2" style="height: 46px; width: 72px; text-align: center;"><span style="font-size:16px;">能力</span></td>
-                                <td colspan="4" style="text-align: center;"><span style="font-size:16px;">'.$recordsub->SA.'</span></td>
-                            </tr>
-                            <tr height="23">
-                                <td colspan="4" height="23" style="height: 23px; width: 288px; text-align: center;"><span style="font-size:16px;">'.$recordsub->SA2.'</span></td>
-                            </tr>
-
-                            <tr height="23">
-                                <td colspan="5" height="23" style="height: 23px; width: 360px; text-align: center;"><span style="font-size:16px;">進化</span></td>
-                            </tr>
-                            <tr height="23">
-                                <td height="23" style="height: 23px; width: 72px; text-align: center;"><span style="font-size:16px;">進化前</span></td>
-                                <td colspan="4" style="text-align: center;"><span style="font-size:16px;">－</span></td>
-                            </tr>
-                            <tr height="23">
-                                <td height="23" style="height: 23px; width: 72px; text-align: center;"><span style="font-size:16px;">進化後</span></td>
-                                <td colspan="4" style="width: 288px; text-align: center;"><span style="font-size:16px;">最終進化</span></td>
-                            </tr>
-                            <tr height="23">
-                                <td height="23" style="height: 23px; width: 72px; text-align: center;"><span style="font-size:16px;">必要素材</span></td>
-                                <td colspan="4" style="width: 288px; text-align: center;"><span style="font-size:16px;">－</span></td>
-                            </tr>';
-                            mysql_close ($link);
-                        ?>
+                        });
+                    </script>
 
                     </tbody>
                 </table>
@@ -488,7 +523,6 @@
             
         </div>
     </div>
-    <script src=/Scripts/AssetsBS3/ie10-viewport-bug-workaround.js></script>
     <footer class=footer>
          </br><p style = "text-align:center">2016&copy; Wlogsky、Patato、Ryanooo </p></footer>
 </body>
