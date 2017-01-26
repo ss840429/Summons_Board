@@ -355,7 +355,7 @@
                 <button id="search_button" >查詢</button>
                 <table align="center" border="2" cellpadding="0" cellspacing="0" style="width: 500px;" width="360">
                     <colgroup><col span="5" style="text-align: center;" /></colgroup>
-                    <tbody id="search">
+                    <tbody id="search_info">
                     <script type="text/javascript">     // Search
 
                         $("#search_button").click( () =>{
@@ -365,8 +365,13 @@
                             else{
                                 var content ;
                                 db.child('pet/'+input_id).once('value', e => {      // Get info of pet
-
                                     var info = e.val() ;
+                                    if( info == null ) 
+                                    {
+                                        content = `找不到此寵物，請重新輸入ID查詢`;
+                                        document.querySelector('#search_info').innerHTML = content;
+                                        return ;
+                                    }
 
                                     content =  `<tr height="23">
                                                     <td colspan="5" height="23" style="height:23px; width:360px; text-align:center;">
@@ -444,7 +449,7 @@
                                                     <span style="font-size:16px;">技能</span></td>
                                                 </tr>`;
 
-                                                document.querySelector('#search').innerHTML = content;
+                                                document.querySelector('#search_info').innerHTML = content;
 
                                 // Skill Part 
 
@@ -464,7 +469,7 @@
                                                         <span style="font-size:16px;">${as.val().detail}</span></td>
                                                     </tr>`;
 
-                                                    document.querySelector('#search').innerHTML += content;
+                                                    document.querySelector('#search_info').innerHTML += content;
                                         
                                         })
 
@@ -482,7 +487,7 @@
                                                     <span style="font-size: 16px;">${ls.val().detail}</span></td>
                                                     </tr>` ;
 
-                                                    document.querySelector('#search').innerHTML += content;
+                                                    document.querySelector('#search_info').innerHTML += content;
                                         })
                                     
 
@@ -510,7 +515,7 @@
 
                                         content += `</span></td></tr>` ;
 
-                                        document.querySelector('#search').innerHTML += content ;                                          
+                                        document.querySelector('#search_info').innerHTML += content ;                                     
                                 })
                             }
                         });

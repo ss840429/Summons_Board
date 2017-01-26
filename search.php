@@ -106,9 +106,9 @@
             </div>
 
             <div class='col-lg-6'>
-                <table align="center" border="2" cellpadding="0" cellspacing="0" style="width: 500px;" width="360" id='info'>
+                <table align="center" border="2" cellpadding="0" cellspacing="0" style="width: 500px;" width="360">
                     <colgroup><col span="5" style="text-align: center;" /></colgroup>
-                    <tbody>
+                    <tbody id='info'>
                         <script>
                             $("#submit").click( () =>{
                                 var input_id = document.getElementById("id").value ;
@@ -119,6 +119,12 @@
                                     db.child('pet/'+input_id).once('value', e => {      // Get info of pet
 
                                         var info = e.val() ;
+                                        if( info == null ) 
+                                        {
+                                            content = `找不到此寵物，請重新輸入ID查詢`;
+                                            document.querySelector('#info').innerHTML = content;
+                                            return ;
+                                        }
 
                                         content =  `<tr height="23">
                                                         <td colspan="5" height="23" style="height:23px; width:360px; text-align:center;">
