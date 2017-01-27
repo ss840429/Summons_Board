@@ -148,7 +148,7 @@
                     var sp1 = $('#sp1').val();
                     var sp2 = $('#sp2').val();
 
-                    var update = {} ;
+                    var update = {'ID': add_id} ;
                     if( name.length > 0 ) update['name'] = name ;
                     if( property.length > 0 ) update['Property'] = property ;
                     if( star.length > 0 ) update['Star'] = star ;
