@@ -381,7 +381,7 @@
                                                     <td height="23" style="height: 23px; width: 72px; text-align: center;">
                                                     <span style="font-size:16px;">No.</span></td>
                                                     <td style="width: 72px; text-align: center;">
-                                                    <span style="font-size:16px;">${input_id}</span></td>
+                                                    <span style="font-size:16px;">${info.ID}</span></td>
                                                     <td style="width: 72px; text-align: center;">
                                                     <span style="font-size:16px;">名稱</span></td>
                                                     <td colspan="2" style="width: 144px; text-align: center;">
@@ -528,6 +528,12 @@
             
         </div>
     </div>
+<script type="text/javascript">
+    function TouchPic(a){
+        $('#search_id').val(a);
+        $('#search_button').trigger('click');
+    }
+</script>>
     <footer class=footer>
          </br><p style = "text-align:center">2016-2017&copy; Wlogsky </p></footer>
 </body>
