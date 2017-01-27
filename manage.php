@@ -177,7 +177,20 @@
                         });
                         TouchPic(add_id);
                     });
-                    
+
+                    // skill part
+                    if( lsd.length > 0 )            // leader skill description                    
+                    {
+                        db.child('description/leader/'+ls).update({'detail' : lsd}, error => {
+                            if( error ) console.log(error) ;
+                        })
+                    }
+                    if( asd.length > 0 )            // active skill description and round  
+                    {
+                        db.child('description/active/'+as).update({'detail' : lsd, 'round' : round}, error => {
+                            if( error ) console.log(error) ;
+                        })
+                    }
                 });
 
             </script> 
