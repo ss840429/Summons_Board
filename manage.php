@@ -130,19 +130,7 @@
                     <option value="防禦性能LV3">防禦性能LV3</option>
                     </select></td></tr></table>
 
-                    <input id="file" name="file" type="file">
-
-                    <button id="add_button">新增/更新</button>
-
-                    <!--                             if($_FILES['file']['error'] == 0 ){
-                                move_uploaded_file($_FILES['file']['tmp_name'],'pic/'.$addid.'.gif'); //複製檔案
-                                echo '<img src ="'.'pic/'.$addid.'.gif'.'">' ;
-                            }
-
-
-                                echo "<script>alert('已更新 No.".$_POST["addid"]."')</script>";
-                            }
-                    -->
+                    <button id="add_button" style="margin-left:130px;margin-top:20px;">新增/更新</button>
 
                 </div>
             </div> 
@@ -222,10 +210,42 @@
             <div class=col-lg-3>
                 <h2>Delete</h2>
                 <div id="delete">
-                    <label for="id">ID</label>
+                    <label for="id">ID :</label>
                     <input type="text" id="delete_id"><br>
                     <button id="delete_button">刪除</button>
                 </div>
+                <br>
+                <h2>Upload image</h2>
+                <form method="POST" enctype="multipart/form-data">
+                    <tr><td><label for="pic_id">ID</label></td>
+                    <td><input type="text" name="pic_id"></td></tr>
+                    <input id="file" name="file" type="file">
+                    <input type="hidden" name="action_add" value="submit">
+                    <input type="submit" value="上傳" style="margin-left:70px;margin-top:10px;">
+                </form>
+                <?php      
+                    if( $_POST["action_add"] == "submit" )
+                    {
+                        if( $_FILES['file']['error'] > 0 )
+                        {
+                            echo "<br>請選擇檔案";
+                        }
+                        else if( $_POST["pic_id"] == '' )
+                        {
+                            echo "<br>請輸入ID";
+                        }
+                        else if( $_FILES["file"]["type"] != 'image/gif')
+                        {
+                            echo '\nWrong File, should be .gif file.';
+                        }
+                        else
+                        {
+                            move_uploaded_file($_FILES['file']['tmp_name'],'pic/'.$_POST["pic_id"].'.gif');
+                            echo "<br>上傳成功";
+                            echo '<br><img src ="'.'pic/'.$_POST["pic_id"].'.gif'.'">' ;
+                        }
+                    }
+                ?>
             </div>
             <script type="text/javascript">        // Delete
                 
@@ -438,7 +458,7 @@
         $('#search_id').val(a);
         $('#search_button').trigger('click');
     }
-</script>>
+</script>
     <footer class=footer>
          </br><p style = "text-align:center">2016-2017&copy; Wlogsky </p></footer>
 </body>
