@@ -55,21 +55,19 @@
                 <h2>Add/Update</h2>
                 <div id="Add">
                     <table style="text-align: right;" width="330" border="0">
-                    <tr><td><label for="id">ID</label></td>
-                    <td><input type="text" name="addid"></td></tr>
+                    <tr><td><label for="add_id">ID</label></td>
+                    <td><input type="text" id="add_id"></td></tr>
                     <tr><td><label for="name">Name</label></td>
-                    <td><input type="text" name="name"></td></tr>
+                    <td><input type="text" id="name"></td></tr>
                     <tr><td><label for="property">屬性</label>
-                    <td><input type="text" name="property"></td></tr>
+                    <td><input type="text" id="property"></td></tr>
                     <tr><td><label for="star">Star</label>
-                    <td><input type="text" name="star"></td></tr>
-                    <tr><td><label for="level">Level</label>
-                    <td><input type="text" name="level"></td></tr>
+                    <td><input type="text" id="star"></td></tr>
                     <tr><td><label for="cost">Cost</label>
-                    <td><input type="text" name="cost"></td></tr>
+                    <td><input type="text" id="cost"></td></tr>
 
                     <tr><td><label for="type1">屬性一</label></td>
-                    <td style="text-align: center;"><select name="type1" >
+                    <td style="text-align: center;"><select id="type1" >
                     <option value=""></option>
                     <option value="HP type">HP type</option>
                     <option value="攻擊type">攻擊type</option>
@@ -77,7 +75,7 @@
                     </select> </td></tr>
 
                     <tr><td><label for="type2">屬性二</label></td>
-                    <td style="text-align: center;"><select name="type2" >
+                    <td style="text-align: center;"><select id="type2" >
                     <option value=""></option>
                     <option value="防禦type">防禦type</option>
                     <option value="輔助type">輔助type</option>
@@ -87,210 +85,102 @@
                     </select></td></tr>
 
                     <tr><td><label for="hp">HP</label>
-                    <td><input type="text" name="hp"></td></tr>
+                    <td><input type="text" id="hp"></td></tr>
                     <tr><td><label for="atk">Attack</label>
-                    <td><input type="text" name="atk"></td></tr>
+                    <td><input type="text" id="atk"></td></tr>
 
                     <tr><td><label for="as">主動技名稱</label>
-                    <td><input type="text" name="as"></td></tr>
+                    <td><input type="text" id="as"></td></tr>
                     <tr><td><label for="asd">敘述</label>
-                    <td><input type="text" name="asd"></td></tr>
+                    <td><input type="text" id="asd"></td></tr>
                     <tr><td><label for="round">回數</label>
-                    <td><input type="text" name="round"></td></tr>
+                    <td><input type="text" id="round"></td></tr>
 
                     <tr><td><label for="ls">隊長技名稱</label>
-                    <td><input type="text" name="ls"></td></tr>
+                    <td><input type="text" id="ls"></td></tr>
                     <tr><td><label for="lsd">敘述</label>
-                    <td><input type="text" name="lsd"></td></tr>
+                    <td><input type="text" id="lsd"></td></tr>
                     
                     <tr><td><label for="sp1">能力一</label>
-                    <td><input type="text" name="sp1"></td></tr>
+                    <td><input type="text" id="sp1"></td></tr>
                     <tr><td><label for="sp2">能力二</label>
-                    <td><input type="text" name="sp2"></td></tr></table>
+                    <td><input type="text" id="sp2"></td></tr></table>
 
                     <input id="file" name="file" type="file">
 
-                    <input type="hidden" name="action_add" value="submit">
-                    <input type="submit" value="新增/更新">
+                    <button id="add_button">新增/更新</button>
 
-
-                   <!--  <?php
-                    if($_POST["action_add"] == "submit")
-                    {
-                        $addid = $_POST["addid"];
-
-                        if( $addid == '' )
-                        {
-                            echo "<script>alert('Add:請輸入寵物ID。')</script>";
-                            echo "Add:請輸入寵物ID。";
-                            //die("Add:請輸入寵物ID。");
-                        }
-                        else
-                        {
-                            if($_FILES['file']['error'] == 0 ){
+                    <!--                             if($_FILES['file']['error'] == 0 ){
                                 move_uploaded_file($_FILES['file']['tmp_name'],'pic/'.$addid.'.gif'); //複製檔案
                                 echo '<img src ="'.'pic/'.$addid.'.gif'.'">' ;
                             }
 
-                            $search_addid = "SELECT * FROM pet where ID = $addid";
-                            $result2 = mysql_query($search_addid);
-                            $record2 = mysql_fetch_object($result2);
-
-                            if(!$record2)
-                            {//add pet as_ ls useas usels
-
-                                $add_cmd = "INSERT INTO pet(ID,name,HP,Attack,Cost,Star,Property,Type,Type2,SA,SA2,lv) VALUES('".$_POST["addid"]."','".$_POST["name"]."','".$_POST["hp"]."','".$_POST["atk"]."','".$_POST["cost"]."','".$_POST["star"]."','".$_POST["property"]."','".$_POST["type1"]."','".$_POST["type2"]."','".$_POST["sp1"]."','".$_POST["sp2"]."','".$_POST["level"]."');";
-
-                                $add_useas = "INSERT INTO useas(ID,Title,Round) VALUES('".$_POST["addid"]."','".$_POST["as"]."','".$_POST["round"]."');";
-                                $add_usels = "INSERT INTO usels(ID,Title) VALUES('".$_POST["addid"]."','".$_POST["ls"]."');";
-                                mysql_query($add_cmd);
-                                mysql_query($add_useas);
-                                mysql_query($add_usels);
-
-                                $addas = $_POST["as"];
-                                if ($addas != '') {
-                                    $search_as = "SELECT * FROM as_ WHERE Title = $addas";
-                                    $result_as = mysql_query($search_as);
-                                    //$record_as = mysql_fetch_object($result_as);
-
-                                    if (!$reult_as) {
-                                        $add_as_cmd = "INSERT INTO as_(Title,Description) VALUES('".$_POST["as"]."','".$_POST["asd"]."');";
-                                        mysql_query($add_as_cmd);
-                                    }
-                                    else{
-                                    //已存在as
-                                    }
-                                }
-                                
-
-                                $addls = $_POST["ls"];
-                                if ($addls != '') {
-                                    $search_ls = "SELECT * FROM ls WHERE Title = $addls";
-                                    $result_ls = mysql_query($search_ls);
-                                    //$record_ls = mysql_fetch_object($result_ls);
-
-                                    if (!$result_ls) {
-                                        $add_ls_cmd = "INSERT INTO ls(Title,Description) VALUES('".$_POST["ls"]."','".$_POST["lsd"]."');";
-                                        mysql_query($add_ls_cmd);
-                                    }
-                                    else{
-                                    //已存在ls
-                                    }
-                                }
-
-                                echo "<script>alert('已新增 No.".$_POST["addid"]." ".$_POST["name"]."')</script>";
-                                //echo '<meta http-equiv="REFRESH" CONTENT="0;url=manage.php">';
-                            }
-                            else//update
-                            {
-                                if ($_POST["name"] != '') {
-                                    $update_cmd = "UPDATE pet SET name='".$_POST["name"]."' WHERE ID=".$_POST["addid"].";";
-                                    mysql_query($update_cmd);
-                                }
-                                if ($_POST["hp"] != '') {
-                                    $update_cmd = "UPDATE pet SET HP='".$_POST["hp"]."' WHERE ID=".$_POST["addid"].";";
-                                    mysql_query($update_cmd);
-                                }
-                                if ($_POST["atk"] != '') {
-                                    $update_cmd = "UPDATE pet SET Attack='".$_POST["atk"]."' WHERE ID=".$_POST["addid"].";";
-                                    mysql_query($update_cmd);
-                                }
-                                if ($_POST["cost"] != '') {
-                                    $update_cmd = "UPDATE pet SET Cost='".$_POST["cost"]."' WHERE ID=".$_POST["addid"].";";
-                                    mysql_query($update_cmd);
-                                }
-                                if ($_POST["star"] != '') {
-                                    $update_cmd = "UPDATE pet SET Star='".$_POST["star"]."' WHERE ID=".$_POST["addid"].";";
-                                    mysql_query($update_cmd);
-                                }
-                                if ($_POST["property"] != '') {
-                                    $update_cmd = "UPDATE pet SET Property='".$_POST["property"]."' WHERE ID=".$_POST["addid"].";";
-                                    mysql_query($update_cmd);
-                                }
-                                if ($_POST["type1"] != '') {
-                                    $update_cmd = "UPDATE pet SET Type='".$_POST["type1"]."' WHERE ID=".$_POST["addid"].";";
-                                    mysql_query($update_cmd);
-                                }
-                                if ($_POST["type2"] != '') {
-                                    $update_cmd = "UPDATE pet SET Type2='".$_POST["type2"]."' WHERE ID=".$_POST["addid"].";";
-                                    mysql_query($update_cmd);
-                                }
-                                if ($_POST["sp1"] != '') {
-                                    $update_cmd = "UPDATE pet SET SA='".$_POST["sp1"]."' WHERE ID=".$_POST["addid"].";";
-                                    mysql_query($update_cmd);
-                                }
-                                if ($_POST["sp2"] != '') {
-                                    $update_cmd = "UPDATE pet SET SA2='".$_POST["sp2"]."' WHERE ID=".$_POST["addid"].";";
-                                    mysql_query($update_cmd);
-                                }
-                                if ($_POST["lv"] != '') {
-                                    $update_cmd = "UPDATE pet SET Level='".$_POST["lv"]."' WHERE ID=".$_POST["addid"].";";
-                                    mysql_query($update_cmd);
-                                }
-
-
-                                //pet(ID,name,HP,Attack,Cost,Star,Property,Type,Type2,SA,SA2,lv)
-                                if ($_POST["as"] != '') {
-                                    $update_useas = "UPDATE useas SET Title='".$_POST["as"]."' WHERE ID='".$_POST["addid"]."';";
-                                    mysql_query($update_useas);
-                                //useas(ID,Title,Round)
-                                }
-                                if ($_POST["round"] != '') {
-                                    $update_useas = "UPDATE useas SET Round='".$_POST["round"]."' WHERE ID='".$_POST["addid"]."';";
-                                    mysql_query($update_useas);
-                                //useas(ID,Title,Round)
-                                }
-                                
-                                if ($_POST["ls"] != '') {
-                                    $update_usels = "UPDATE usels SET Title='".$_POST["ls"]."' WHERE ID='".$_POST["addid"]."';";
-                                    mysql_query($update_usels);
-                                //usels(ID,Title)
-                                }
-                                
-                                $addas = $_POST["as"];
-                                if ($addas != '') {
-                                    $search_as = "SELECT * FROM as_ WHERE Title = $addas";
-                                    $result_as = mysql_query($search_as);
-                                    //$record_as = mysql_fetch_object($result_as);
-                                    if (!$result_as) {
-                                        $add_as_cmd = "INSERT INTO as_(Title,Description) VALUES('".$_POST["as"]."','".$_POST["asd"]."');";
-                                        mysql_query($add_as_cmd);
-                                    }
-                                    else{
-                                    //已存在as
-                                        
-                                    }
-                                }
-                                
-
-                                $addls = $_POST["ls"];
-                                if ($addls != '') {
-                                    $search_ls = "SELECT * FROM ls WHERE Title = $addls";
-                                    $result_ls = mysql_query($search_ls);
-                                    //$record_ls = mysql_fetch_object($result_ls);
-
-                                    if (!$result_ls) {
-                                        $add_ls_cmd = "INSERT INTO ls(Title,Description) VALUES('".$_POST["ls"]."','".$_POST["lsd"]."');";
-                                        mysql_query($add_ls_cmd);
-                                    }
-                                    else{
-                                    //已存在ls
-                                    }
-                                }
-                                
 
                                 echo "<script>alert('已更新 No.".$_POST["addid"]."')</script>";
                             }
-                        }
-                    }
-                    ?> -->
+                    -->
+
                 </div>
             </div> 
             <script type="text/javascript">         // Add or Update 
                 var db = new Firebase('https://summonsboard-2c5f0.firebaseio.com/') ;
                 var pic = 'pic/';
+                $("#add_button").click( () =>{
+                    var add_id = $('#add_id').val();
+                    if( add_id.length <= 0 ){
+                        alert( "請輸入ID" ) ;
+                        return ;
+                    }
+                    var name = $('#name').val();
+                    var property = $('#property').val();
+                    var star = $('#star').val();
+                    var cost = $('#cost').val();
+                    var type1 = $('#type1').val();
+                    var type2 = $('#type2').val();
 
-            </script>> 
+                    var hp = $('#hp').val();
+                    var atk = $('#atk').val();
+                    var as = $('#as').val();
+                    var asd = $('#asd').val();
+                    var round = $('#round').val();
+                    var ls = $('#ls').val();
+                    var lsd = $('#lsd').val();
+                    var sp1 = $('#sp1').val();
+                    var sp2 = $('#sp2').val();
+
+                    var update = {} ;
+                    if( name.length > 0 ) update['name'] = name ;
+                    if( property.length > 0 ) update['Property'] = property ;
+                    if( star.length > 0 ) update['Star'] = star ;
+                    if( cost.length > 0 ) update['Cost'] = cost ;
+                    if( type1.length > 0 ) update['Type'] = type1 ;
+                    if( type2.length > 0 ) update['Type2'] = type2 ;
+                    if( hp.length > 0 ) update['HP' ]= hp  ;
+                    if( atk.length > 0 ) update['Attack'] = atk  ;
+                    if( as.length > 0 ) update['Active'] = as  ;
+                    if( ls.length > 0 ) update['Leader'] = ls  ;
+                    if( sp1.length > 0 ) update['SA'] = sp1  ;
+                    if( sp2.length > 0 ) update['SA2'] = sp2  ;
+
+                    db.child('pet/'+add_id).once('value', e => {                    // Add or Update pet
+                        if( e == null && (update.length < 13) ){
+                            alert('寵物資訊不完整，請至少填入 技能相關以外 的欄位');
+                            return ;
+                        }
+                        db.child('pet/'+add_id).update(update, error => {
+                            if( error ) alert(error) ;
+                            else
+                            {
+                                if( e == null ) alert('NO.'+add_id+' 新增成功');
+                                else alert('NO.'+add_id+' 更新成功');
+                            }
+                        });
+                        TouchPic(add_id);
+                    });
+                    
+                });
+
+            </script> 
 
             <div class=col-lg-3>
                 <h2>Delete</h2>
