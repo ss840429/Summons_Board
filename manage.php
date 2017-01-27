@@ -295,55 +295,33 @@
             <div class=col-lg-3>
                 <h2>Delete</h2>
                 <div id="delete">
-                    <form method="POST">
-                        <label for="id">ID</label>
-                        <input type="text" name="id"><br>
-                        <input type="hidden" name="action" value="submit">
-                        <input type="submit" value="刪除">
-                    </form>
-                    <!-- <?php
-                        if($_POST["action"] == "submit")
-                        {
-                            $id = $_POST["id"];
-                            if( $id == '' )
-                            {
-                                echo "<script>alert('Delete:請輸入寵物ID。')</script>";
-                                echo "Delete:請輸入寵物ID。";
-                                //die("Delete:請輸入寵物ID。") ;
-
-                            }
-                            else
-                            {
-                                $search_id="SELECT * FROM pet where ID = $id";
-                                $result = mysql_query($search_id);
-                                $record = mysql_fetch_object($result);
-
-                                if( !$record )
-                                {
-                                    echo "<script>alert('Delete:無此寵物!')</script>";
-                                }
-                                else
-                                {
-                                // delete pet ,useas,usels...
-                                // as ls 不用 ，會有相同技能
-                                $sql = "DELETE FROM pet WHERE ID = ".$id;
-                                mysql_query($sql) ;
-                                $sql = "DELETE FROM useas WHERE ID = ".$id;
-                                mysql_query($sql) ;
-                                $sql = "DELETE FROM usels WHERE ID = ".$id;
-                                mysql_query($sql) ;
-
-                                echo '<script>alert("已刪除'.$record->ID."  ".$record->name.'")</script>';
-
-                                //echo '<meta http-equiv="REFRESH" CONTENT="0;url=manage.php">';
-                            }
-                        }
-                    }
-                    ?> -->
+                    <label for="id">ID</label>
+                    <input type="text" id="delete_id"><br>
+                    <button id="delete_button">刪除</button>
                 </div>
             </div>
             <script type="text/javascript">        // Delete
                 
+                $("#delete_button").click( () =>{
+                    var delete_id = $("#delete_id").val() ;
+                    if( delete_id.length <= 0 ) console.log( "No Data input" ) ;
+                    else{
+                        db.child('pet/'+delete_id).once('value', e => {      // Get info of pet
+                            if( e.val() == null ) 
+                            {
+                                alert('Delete:找不到此寵物，請重新輸入ID');
+                                return ;
+                            }
+                            if( confirm('Really want to delete ID.'+delete_id+'?') )    // Only remove pet
+                            {
+                                db.child('pet/'+delete_id).remove( error => {       
+                                    if( !error ) alert('已刪除 ID.'+delete_id);
+                                    else alert(error);
+                                }); 
+                            }
+                        });            
+                    }
+                });
 
             </script>
 
