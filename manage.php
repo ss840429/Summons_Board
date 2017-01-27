@@ -101,10 +101,34 @@
                     <tr><td><label for="lsd">敘述</label>
                     <td><input type="text" id="lsd"></td></tr>
                     
-                    <tr><td><label for="sp1">能力一</label>
-                    <td><input type="text" id="sp1"></td></tr>
-                    <tr><td><label for="sp2">能力二</label>
-                    <td><input type="text" id="sp2"></td></tr></table>
+                    <tr><td><label for="sp1">能力一</label></td>
+                    <td style="text-align: center;"><select id="sp1" >
+                    <option value=""></option>
+                    <option value="飛行">飛行</option>
+                    <option value="全體化">全體化</option>
+                    <option value="對空打擊">對空打擊</option>
+                    <option value="愛心UP">愛心UP</option>
+                    <option value="不意打LV1">不意打LV1</option>
+                    <option value="不意打LV2">不意打LV2</option>
+                    <option value="貫通LV1">貫通LV1</option>
+                    <option value="貫通LV2">貫通LV2</option>
+                    <option value="迴避性能LV2">迴避性能LV2</option>
+                    <option value="防禦性能LV3">防禦性能LV3</option>
+                    </select></td></tr>
+                    <tr><td><label for="sp2">能力二</label></td>
+                    <td style="text-align: center;"><select id="sp2" >
+                    <option value=""></option>
+                    <option value="飛行">飛行</option>
+                    <option value="全體化">全體化</option>
+                    <option value="對空打擊">對空打擊</option>
+                    <option value="愛心UP">愛心UP</option>
+                    <option value="不意打LV1">不意打LV1</option>
+                    <option value="不意打LV2">不意打LV2</option>
+                    <option value="貫通LV1">貫通LV1</option>
+                    <option value="貫通LV2">貫通LV2</option>
+                    <option value="迴避性能LV2">迴避性能LV2</option>
+                    <option value="防禦性能LV3">防禦性能LV3</option>
+                    </select></td></tr></table>
 
                     <input id="file" name="file" type="file">
 
