@@ -217,7 +217,7 @@
                 <br>
                 <h2>Upload image</h2>
                 <form method="POST" enctype="multipart/form-data">
-                    <tr><td><label for="pic_id">ID</label></td>
+                    <tr><td><label for="pic_id">ID :</label></td>
                     <td><input type="text" name="pic_id"></td></tr>
                     <input id="file" name="file" type="file">
                     <input type="hidden" name="action_add" value="submit">
