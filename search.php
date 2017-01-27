@@ -111,7 +111,7 @@
                     <tbody id='info'>
                         <script>
                             $("#submit").click( () =>{
-                                var input_id = document.getElementById("id").value ;
+                                var input_id = $("#id").value ;
 
                                 if( input_id.length <= 0 ) console.log( "No Data input" ) ;
                                 else{

@@ -359,7 +359,7 @@
                     <script type="text/javascript">     // Search
 
                         $("#search_button").click( () =>{
-                            var input_id = document.getElementById("search_id").value ;
+                            var input_id = $("#search_id").value ;
                             console.log(input_id);
                             if( input_id.length <= 0 ) console.log( "No Data input" ) ;
                             else{
