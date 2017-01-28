@@ -1,13 +1,3 @@
-<?php
-    session_start();
-    //先判斷管理員是否登入，有登入就導向至管理系統
-    if(isset($_SESSION["admin"]))
-        header("Location: manage.php");
-?>
-<?php
-header('Content-type: text/html; charset=utf-8');
-?>
-
 <!DOCTYPE html>
 
 <head>
@@ -42,6 +32,7 @@ header('Content-type: text/html; charset=utf-8');
                         $passwd = $_POST["passwd"];
                         if($id == "admin" && $passwd == "admin")
                         {
+                            session_start();
                             $_SESSION["admin"] = $id;
                             echo '<meta http-equiv="REFRESH" CONTENT="0;url=manage.php">';
                         }

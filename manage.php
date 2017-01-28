@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    if(!isset($_SESSION["admin"]))
+        header("Location: login.php");
+?>
 
 <!DOCTYPE html>
 <html>
@@ -38,7 +43,7 @@
                     <li><a href=search.php>図鑑</a></li>
                     <li><a href=team.php>Team</a></li>
                     <li><a href=download.php>Downloads</a></li>
-                    <li><a href=login.php>Manage</a></li>
+                    <li><a href=manage.php>Manage</a></li>
                     <li><a href=about.php>About</a></li>
                 </ul>
             </div>
